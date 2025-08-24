@@ -208,34 +208,37 @@ const Users = () => {
         />
       </div>
 
-      {/* User Detail Modal */}
-      <Modal
-        open={isDetailModalVisible}
-        title="User Details"
-        onCancel={() => setIsDetailModalVisible(false)}
-        footer={null}
-        centered
-        width={700}
-      >
-        {selectedUser && (
-          <Descriptions
-            bordered
-            column={2}
-            size="middle"
-            className="bg-gray-50 p-4 rounded-lg"
-          >
-            {Object.entries(selectedUser).map(([key, value]) => (
-              <Descriptions.Item key={key} label={key}>
-                {key === "createdAt"
-                  ? convertToIST(value)
-                  : typeof value === "boolean"
-                  ? value.toString()
-                  : value || "—"}
-              </Descriptions.Item>
-            ))}
-          </Descriptions>
-        )}
-      </Modal>
+     {/* User Detail Modal */}
+<Modal
+  open={isDetailModalVisible}
+  title="User Details"
+  onCancel={() => setIsDetailModalVisible(false)}
+  footer={null}
+  centered
+  width="100%"
+  style={{ maxWidth: 700 }}
+  bodyStyle={{ maxHeight: "70vh", overflowY: "auto" }}
+>
+  {selectedUser && (
+    <Descriptions
+      bordered
+      size="middle"
+      className="bg-gray-50 p-4 rounded-lg"
+      column={window.innerWidth < 640 ? 1 : 2} // 1 col on mobile, 2 on larger
+    >
+      {Object.entries(selectedUser).map(([key, value]) => (
+        <Descriptions.Item key={key} label={key}>
+          {key === "createdAt"
+            ? convertToIST(value)
+            : typeof value === "boolean"
+            ? value.toString()
+            : value || "—"}
+        </Descriptions.Item>
+      ))}
+    </Descriptions>
+  )}
+</Modal>
+
 
       {/* Delete Confirmation Modal */}
       <Modal
