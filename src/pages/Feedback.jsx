@@ -69,10 +69,13 @@ const AppFeedBack = () => {
       key: "feedbackContent",
       ellipsis: true,
     },
-    {
+     {
       title: "Created At",
-      dataIndex: "createdAt",
+      dataIndex: ["deviceInfo", "createdAt"],
       key: "createdAt",
+      sorter: (a, b) =>
+        new Date(a.deviceInfo?.createdAt) - new Date(b.deviceInfo?.createdAt),
+      defaultSortOrder: "descend",
       render: (_, val) => convertToIST(val?.deviceInfo?.createdAt),
     },
     {
