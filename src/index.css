@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Menu Base */
+.custom-light-menu {
+  background: transparent !important;
+  border-inline-end: none !important;
+  font-weight: 500;
+  font-size: 15px;
+}
+
+/* Menu Item */
+.custom-light-menu .ant-menu-item {
+  margin: 8px 0;
+  border-radius: 14px !important;
+  transition: all 0.3s ease;
+  color: #374151 !important; /* gray-700 */
+}
+
+/* Hover Effect */
+.custom-light-menu .ant-menu-item:hover {
+  background: linear-gradient(135deg, #a78bfa, #f472b6) !important;
+  color: #ffffff !important; /* gray-900 */
+  box-shadow: 0 4px 6px rgba(167, 139, 250, 0.3);
+}
+
+/* Selected (Active) Item */
+.custom-light-menu .ant-menu-item-selected {
+  background: linear-gradient(135deg, #a78bfa, #f472b6) !important;
+  color: #fff !important;
+  box-shadow: 0 6px 16px rgba(129, 140, 248, 0.4);
+  border-radius: 14px !important;
+  font-weight: bold;
+}
