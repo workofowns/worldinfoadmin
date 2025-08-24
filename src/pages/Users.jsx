@@ -203,6 +203,8 @@ const Users = () => {
           columns={columns}
           rowKey={(record) => record.id}
           pagination={{ pageSize: 10 }}
+          className="rounded-lg min-w-[700px]"
+
         />
       </div>
 
