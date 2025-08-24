@@ -87,7 +87,10 @@ const Users = () => {
       const [start, end] = dateRange;
       result = result.filter((user) => {
         const created = dayjs(user.createdAt);
-        return created.isAfter(start.startOf("day")) && created.isBefore(end.endOf("day"));
+        return (
+          created.isAfter(start.startOf("day")) &&
+          created.isBefore(end.endOf("day"))
+        );
       });
     }
 
@@ -194,13 +197,12 @@ const Users = () => {
         </div>
       </div>
 
-      <div className="bg-white shadow-md rounded-xl p-4">
+      <div className="bg-white p-4 rounded-2xl shadow-md border border-gray-100 overflow-x-auto">
         <Table
           dataSource={filtered}
           columns={columns}
           rowKey={(record) => record.id}
           pagination={{ pageSize: 10 }}
-          className="rounded-lg"
         />
       </div>
 

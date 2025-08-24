@@ -96,10 +96,10 @@ const AppFeedBack = () => {
   }
 
   return (
-    <div className="p-4">
+    <div className="p-6 bg-gray-50 min-h-screen">
       {/* Header */}
-      <div className="flex justify-between items-center mb-6">
-        <Title level={2} className="!mb-0">
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6 gap-3">
+        <Title level={2} className="!mb-0 text-gray-800">
           💬 User Feedback
         </Title>
         <Search
@@ -108,21 +108,24 @@ const AppFeedBack = () => {
           enterButton
           size="large"
           onChange={handleSearch}
-          className="max-w-xs"
+          className="w-full md:w-80"
         />
       </div>
 
-      {/* Table */}
-      <Table
-        dataSource={filtered}
-        columns={columns}
-        rowKey={(record) => record.uuid}
-        pagination={{ pageSize: 10, showSizeChanger: false }}
-         locale={{
-            emptyText: <Empty description="No countries found" />,
+      {/* Responsive Table */}
+      <div className="bg-white p-4 rounded-2xl shadow-md border border-gray-100 overflow-x-auto">
+        <Table
+          dataSource={filtered}
+          columns={columns}
+          rowKey={(record) => record.uuid}
+          pagination={{ pageSize: 10, showSizeChanger: false }}
+          className="rounded-lg min-w-[700px]"
+          locale={{
+            emptyText: <Empty description="No feedback found" />,
           }}
-          footer={() => `Total Countries: ${filtered.length}`}
-      />
+          footer={() => `Total Feedbacks: ${filtered.length}`}
+        />
+      </div>
     </div>
   );
 };
